@@ -5,18 +5,27 @@
   <meta charset="UTF-8">
   <title>Document</title>
   <style>
-    #canvas {
+    .layer{
       float: left;
+      position: absolute;
+      background-color: transparent;
+    }
+    .hoge {
+      margin-left: 350px;
     }
   </style>
 </head>
 <body>
   <div id="hoge">
-    <canvas id="canvas" width="300" height="300"></canvas>
+    <canvas id="canvas" width="300" height="300" class="layer"></canvas>
+    <canvas id="canvas2" width="300" height="300" class="layer"></canvas>
   </div>
-  <button id="change" value="0">デジタル</button>
-  <hr />
-  <button id="color">色変更</button>
+  <div class="hoge">
+    <button id="change" value="0">デジタル</button>
+    <hr />
+    <button id="color">色変更</button>
+  </div>
+  
   <script src="./clock.js"></script>
 </body>
 </html>
