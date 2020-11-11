@@ -18,6 +18,7 @@ window.onload = () => {
   setlayer(canvas,10,10,1);
   setlayer(canvas2,10,10,2);
   
+  // canvasの変更-時計の外形(針以外)
   function piyo() {
     ctx.clearRect(0,0,300,300);
     ctx.arc(150,150,145,0,2*Math.PI);
@@ -29,6 +30,7 @@ window.onload = () => {
   }
   piyo();
 
+  // canvasの変更-時計の針の描画
   function drawClock() {
     ctx2.clearRect(0,0,300,300);
     ctx2.arc(150,150,145,0,2*Math.PI);
@@ -50,34 +52,53 @@ window.onload = () => {
   color.onclick = () => {
     // 選択可能背景色の作成
     const fuga = [
-      "LightGrey","Blue","red","white","lightblue"
+      "LightGrey","Blue","red","white","lightblue","green","grey","lightgreen"
     ];
+    console.log(fuga);
     // ランダムで背景色を配列から抽出
     const piyo = fuga[Math.floor(Math.random() * fuga.length)];
     console.log(piyo);
-    // 背景色に反映させる
-    ctx.fillStyle = piyo;
-    // 描画する
-    ctx.fill();
+    if (confirm("色を"+piyo+"に変更しても良いですか？")) {
+      // 背景色に反映させる
+      ctx.fillStyle = piyo;
+      // 描画する
+      ctx.fill();
+    } else {
+      alert("色変更がキャンセルされました");
+    }
   }
 
-  // デジタル時計
-  function hoge() {
-  
+  // デジタル時計(ボタンを押した時の時間をデジタル表記に変更して画面に出力する)
+  change.onclick = () => {
     const time = new Date();
+    console.log(time);
+    const month = time.getMonth()+1;
+    const date = time.getDate();
     const hour = time.getHours();
     const minute = time.getMinutes();
     const second = time.getSeconds();
+    const clock = month + "/" + date + " " + hour+":"+minute+":"+second; 
+    const disp = document.getElementById('degital');
 
-    const clock = hour+":"+minute+":"+second;
+    // ロンドンも表示
+    const jisa = time.setTime(time.getTime() - 1000*60*60*9);
+    const lon = new Date(jisa);
+    console.log(lon);
+    const lMonth = lon.getMonth();
+    const lDate = lon.getDate();
+    const lHour = lon.getHours();
+    const lMinute = lon.getMinutes();
+    const lSecond = lon.getSeconds();
+    const london = lMonth + "/" + lDate + " " + lHour + ":" + lMinute + ":" + lSecond;
 
-    display.removeChild(canvas);
-    display.innerHTML = clock;
-    alert("デジタル表記に変更します。");
-    setInterval(hoge,1000);
+    // 日付と時刻を表示するエレメントの作成
+    const li = document.createElement('li');
+    // 日本の要素
+    li.innerHTML = "日本標準時" + " " + clock + "<br />" +
+                   "世界標準時(UTC)" + " " + london;
+    disp.appendChild(li);
   }
-  change.onclick = hoge;
-
+  
   // アナログ時計の針描画（リアルタイムで動く）
   function drawClockHands(angle, width, height) {
     ctx2.save();
@@ -90,24 +111,7 @@ window.onload = () => {
     ctx2.restore();
   }
 
-
-    // アナログ時計の針を動かし続けるためのインターバル設定
-    setInterval(drawClock, 500);
-    drawClock();
+  // アナログ時計の針を動かし続けるためのインターバル設定
+  setInterval(drawClock, 500);
+  drawClock();
 }
-
-// const change = document.getElementById('change');
-// const display = document.getElementById('hoge');
-// change.onclick = function hoge() {
-  
-//   const time = new Date();
-//   const hour = time.getHours();
-//   const minute = time.getMinutes();
-//   const second = time.getSeconds();
-
-//   const clock = hour+":"+minute+":"+second;
-
-//   display.removeChild(canvas);
-//   display.innerHTML = clock;
-//   alert("デジタル表記に変更します。");
-// }
