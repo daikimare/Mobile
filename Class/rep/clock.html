@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    .layer{
+      float: left;
+      position: absolute;
+      background-color: transparent;
+    }
+    .hoge {
+      margin-left: 350px;
+    }
+  </style>
+</head>
+<body>
+  <div id="hoge">
+    <canvas id="canvas" width="300" height="300" class="layer"></canvas>
+    <canvas id="canvas2" width="300" height="300" class="layer"></canvas>
+  </div>
+  <div class="hoge">
+    <input type="button" id="change" value="デジタル">
+    <ul id="degital"></ul>
+    <hr />
+    <button id="color">色変更</button>
+  </div>
+  
+  <script src="./clock.js"></script>
+</body>
+</html>

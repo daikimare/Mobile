@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0,0,0,0;
+    }
+    .clockName {
+      text-align: center;
+    }
+    .app {
+      position: absolute;
+      float: left;
+    }
+    .messageZone {
+      position: absolute;
+      margin-top: -170px; 
+      margin-left: 400px;
+    }
+    .messageArea {
+      position: absolute;
+      float: left;
+    }
+    
+  </style>
+  <title>class clock</title>
+</head>
+<body>
+  <h1 id="js-name" class="clockName">JapanClock</h1>
+  <hr />
+  <p>これは自分が何時に何をしたかを記録する時計です。<br />
+    テキストダイアログに自分がやったタスクを記入して送信してください。<br />
+    アナログ時計に出ている時間と入力テキストを連結して表示します。</p>
+    <hr />
+  <div id="app">
+    <canvas id="canvas" width="300" height="300"></canvas>
+  </div>
+  <form class="messageZone" id="messageZone" onsubmit="send();">
+    <input type="text" id="message">  <!-- ① -->
+    <input type="button" value="送信" id="send">
+  </form>
+  <ul id="mlist">
+    <!-- ここに①メッセージを追加していく -->
+    <!-- メッセージは時間と一緒に表示 -->
+  </ul>
+</body>
+<script src="./sample.js"></script>
+</html>
