@@ -1,6 +1,6 @@
 const canvas = document.getElementById('canvas');
 const message = document.getElementById('message');
-const button = document.getElementById('button');
+// const button = document.getElementById('button');
 const ctx = canvas.getContext('2d');
 
 function drawClock() {
