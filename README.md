@@ -2,5 +2,5 @@
 ## introduction
 金沢工業大学モバイルアプリケーション授業用ディレクトリ
 ## element
-基本的にはJavaScrptの記述とHTML
+基本的にはJavaScrptの記述とHTML  
 作品の制作に関してはReactを利用するため、別階層にディレクトリを作成する
